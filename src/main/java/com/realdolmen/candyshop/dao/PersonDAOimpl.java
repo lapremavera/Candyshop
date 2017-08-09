@@ -5,9 +5,7 @@ import com.realdolmen.candyshop.entities.Person;
 import javax.persistence.EntityManager;
 import java.util.List;
 
-/**
- * Created by vdabcursist on 08/08/2017.
- */
+
 public class PersonDAOimpl implements PersonDAO {
 
     EntityManager em;

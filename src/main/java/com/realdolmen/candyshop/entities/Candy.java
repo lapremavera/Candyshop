@@ -2,9 +2,6 @@ package com.realdolmen.candyshop.entities;
 
 import javax.persistence.*;
 
-/**
- * Created by vdabcursist on 08/08/2017.
- */
 @Entity
 public class Candy {
 

@@ -3,27 +3,30 @@ package com.realdolmen.candyshop.entities;
 import com.realdolmen.candyshop.util.Datebuilder;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import java.util.ArrayList;
 import java.util.Date;
-
-/**
- * Created by vdabcursist on 08/08/2017.
- */
+import java.util.List;
 
 @Entity
 public class Person {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotNull @Size(max = 200)
     private String firstName;
+    @NotNull @Size(max = 200)
     private String lastName;
     @Temporal(TemporalType.DATE) @Column(nullable = false)
     private Date birthdate;
     @Transient
     private Long age;
-
-
-
-
+    @Embedded
+    private Adress adress;
+    @CollectionTable(name = "candyPreference")
+            @Column(name = "color")
+    List<Candycolor> candyPreference = new ArrayList<>();
 
     public Person(String firstName, String lastName) {
         this.firstName = firstName;
