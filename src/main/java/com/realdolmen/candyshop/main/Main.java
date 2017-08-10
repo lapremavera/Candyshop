@@ -2,6 +2,7 @@ package com.realdolmen.candyshop.main;
 
 import com.realdolmen.candyshop.entities.Candy;
 import com.realdolmen.candyshop.entities.Candycolor;
+import com.realdolmen.candyshop.entities.Order;
 import com.realdolmen.candyshop.entities.Person;
 
 import javax.persistence.EntityManager;
@@ -23,7 +24,11 @@ public class Main {
         Person person = new Person("John", "Doe", "2011-01-01");
         em.persist(person);
 
-        Candy candy = new Candy("Beertje", Candycolor.BLACK);
+
+
+        Candy candy = new Candy("Veter", Candycolor.BLACK);
+        Order o = new Order();
+        o.calculateTotal();
         em.persist(candy);
         tx.commit();
 

@@ -23,10 +23,12 @@ public class Person {
     @Transient
     private Long age;
     @Embedded
-    private Adress adress;
+    private Adress deliveryAdress;
     @CollectionTable(name = "candyPreference")
             @Column(name = "color")
+            @ElementCollection
     List<Candycolor> candyPreference = new ArrayList<>();
+
 
     public Person(String firstName, String lastName) {
         this.firstName = firstName;
@@ -80,6 +82,22 @@ public class Person {
 
     public void setAge(Long age) {
         this.age = age;
+    }
+
+    public Adress getDeliveryAdress() {
+        return deliveryAdress;
+    }
+
+    public void setDeliveryAdress(Adress deliveryAdress) {
+        this.deliveryAdress = deliveryAdress;
+    }
+
+    public List<Candycolor> getCandyPreference() {
+        return candyPreference;
+    }
+
+    public void setCandyPreference(List<Candycolor> candyPreference) {
+        this.candyPreference = candyPreference;
     }
 
     @Override

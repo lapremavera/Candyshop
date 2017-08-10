@@ -1,10 +1,11 @@
 package com.realdolmen.candyshop.entities;
 
+import javax.persistence.Embeddable;
 import javax.persistence.Id;
 
+@Embeddable
 public class Adress {
-    @Id
-    private Long id;
+
 
     private String streetName;
     private String streetNameNumber;
@@ -12,8 +13,7 @@ public class Adress {
     private String zipcode;
     private String country;
 
-    public Adress(Long id, String streetName, String streetNameNumber, String city, String zipcode, String country) {
-        this.id = id;
+    public Adress(String streetName, String streetNameNumber, String city, String zipcode, String country) {
         this.streetName = streetName;
         this.streetNameNumber = streetNameNumber;
         this.city = city;
@@ -22,14 +22,6 @@ public class Adress {
     }
 
     public Adress() {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getStreetName() {
@@ -75,8 +67,7 @@ public class Adress {
     @Override
     public String toString() {
         return "Adress{" +
-                "id=" + id +
-                ", streetName='" + streetName + '\'' +
+                " streetName='" + streetName + '\'' +
                 ", streetNameNumber='" + streetNameNumber + '\'' +
                 ", city='" + city + '\'' +
                 ", zipcode='" + zipcode + '\'' +

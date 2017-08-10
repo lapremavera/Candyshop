@@ -11,6 +11,13 @@ public class Candy {
 
     @Enumerated(EnumType.STRING)
     private Candycolor candyColor;
+    private int price;
+
+
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
 
     public Candy(String name, Candycolor candyColor) {
         this.name = name;
@@ -42,6 +49,9 @@ public class Candy {
 
     public void setCandyColor(Candycolor candyColor) {
         this.candyColor = candyColor;
+    }
+    public int getPrice() {
+        return price;
     }
 
     @Override
