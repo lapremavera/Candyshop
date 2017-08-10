@@ -6,6 +6,7 @@ import com.sun.javafx.geom.transform.Identity;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "order_line")
 public class OrderLine {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -19,8 +20,7 @@ public class OrderLine {
         this.calculateSubTotal = calculateSubTotal;
     }
 
-    public OrderLine(Long id, int quantity, Candy candy) {
-        this.id = id;
+    public OrderLine(int quantity, Candy candy) {
         this.quantity = quantity;
         this.candy = candy;
     }

@@ -10,6 +10,8 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
+@NamedQuery(name = "FIND_BY_LAST_NAME",query = "select p from Person p where p.lastName = :lname")
+//lname is een key die ik uitgevonden heb om de lastName te vinden
 public class Person {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,6 +30,8 @@ public class Person {
             @Column(name = "color")
             @ElementCollection
     List<Candycolor> candyPreference = new ArrayList<>();
+    @OneToMany(mappedBy = "person")
+    List<Order>orderHistory = new ArrayList<>();
 
 
     public Person(String firstName, String lastName) {
@@ -108,5 +112,9 @@ public class Person {
                 ", lastName='" + lastName + '\'' +
                 ", birthdate='" + Datebuilder.createString(birthdate) + '\'' +
                 '}';
+    }
+    public void addOrderToHistory(Order candyOrderHistory){
+        this.addOrderToHistory(candyOrderHistory);
+
     }
 }

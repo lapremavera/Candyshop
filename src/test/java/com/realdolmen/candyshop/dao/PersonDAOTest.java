@@ -13,9 +13,6 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-/**
- * Created by vdabcursist on 08/08/2017.
- */
 public class PersonDAOTest {
 
     private static EntityManagerFactory emf;
@@ -53,6 +50,33 @@ public class PersonDAOTest {
         assertEquals(2, people.size());
 
     }
+    @Test
+    public void shouldFindPersonById(){
+        Person person = dao.findPersonById(1L);
+        assertNotNull(person);
+        assertEquals(new Long(1L),person.getId());
+        assertEquals("John",person.getFirstName());
+    }
+    @Test
+    public void ShouldUpdatePerson(){
+        Person person=dao.findPersonById(1L);
+        assertNotNull(person);
+        person.setFirstName("Theo");
+        person =dao.updatePerson(person);
+        em.flush();
+        em.clear();
+        person=dao.findPersonById(1L);
+        assertNotNull(person);
+    }
+    @Test
+    public void ShouldDeletePerson(){
+        Person person = dao.findPersonById(1L);
+        em.remove(person);
+        assertNotNull(person);
+
+
+    }
+
 
     @After
     public void destroy (){

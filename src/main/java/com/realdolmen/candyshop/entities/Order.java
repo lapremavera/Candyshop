@@ -5,24 +5,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Table(name = "candy_order")
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @ManyToOne
     private Person person;
 
+    @OneToMany
+    @JoinColumn(name = "Orderline_fk")
     List<OrderLine> orderLines = new ArrayList<>();
     @Embedded
     private Adress deliveryAddress;
 
     private double calculateTotal;
 
-    public Order(Long id, Person person, List<OrderLine> orderLines, Adress deliveryAddress, double calculateTotal) {
-        this.id = id;
+    public Order(Person person, Adress deliveryAddress) {
         this.person = person;
-        this.orderLines = orderLines;
         this.deliveryAddress = deliveryAddress;
-        this.calculateTotal = calculateTotal;
+
     }
 
     public Order() {
@@ -76,6 +78,9 @@ public class Order {
         return total;
 
         //return orderLines.stream().mapToDouble(OrderLine::calculateSubTotal).sum();
+    }
+    public void addOrderLine(OrderLine CandyOrder){
+        this.addOrderLine(CandyOrder);
     }
 
 
